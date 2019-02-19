@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Page_1.qml</file>
+        <file>Background.qml</file>
+        <file>Node_line.qml</file>
+        <file>Node_shape.qml</file>
+        <file>Node_text.qml</file>
+        <file>Page_2.qml</file>
+    </qresource>
+</RCC>
