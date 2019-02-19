@@ -1,9 +1,9 @@
 # Dijkstra-Algorithm-Qt
 
-School project c++ :
+< School project c++ > 
 
 Implementation of the Dijkstra algorithm, not the greatest and simplest code but it works and the code is somewhat readable. 
-used Qml for the interface.
+Qml used for the interface.
 
 
 ## Built With :
