@@ -2,13 +2,16 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.11
+import DjiskraAlgo 1.0
 
 
-Item{
+
+Background{
 
      readonly property int lay : 400
 
     Rectangle {
+
         id : rect_page2
         border.width: 5;
         border.color: "white"
@@ -17,7 +20,7 @@ Item{
         color: "#62a8f8"
 
         Text {
-            id: sidebar_text
+            id: sidebatext
             font.pointSize: (window.width>lay)?rect_page2.width*0.06:rect_page2.width*0.05
             anchors.fill : rect_page2
             anchors.centerIn: rect_page2
@@ -72,6 +75,7 @@ Item{
         width:(window.width>lay)?parent.width*0.44:parent.width * 0.60
         height: parent.height*0.1
         text: "Find"
+        flat: false
         highlighted: true
         font.pointSize: (window.width>lay)?15:23
     }

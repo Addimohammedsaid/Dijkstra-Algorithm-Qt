@@ -7,5 +7,6 @@
         <file>Node_shape.qml</file>
         <file>Node_text.qml</file>
         <file>Page_2.qml</file>
+        <file>Affiche.qml</file>
     </qresource>
 </RCC>

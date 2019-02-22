@@ -18,6 +18,7 @@ Background{
     property variant _idLine:[[a_c,a_b],[a_b,b_d,b_e],[c_d,c_f,a_c],[c_d,d_e,b_d],[d_e,b_e,e_g],[c_f,f_g],[f_g,e_g]]
     property variant chemin: []
 
+
     Djiskralgo{
 
         id:djiska
@@ -46,11 +47,20 @@ Background{
        }
 
         onDistanceChanged :{
-             a_to_b_distance.text = djiska.distance;
+            tab._depart.text = djiska.dest
+            tab._arriver.text = djiska.src
+            tab._distance.text = djiska.distance
         }
     }
 
     anchors.fill : parent
+
+    Affiche{
+        id : tab
+        anchors.centerIn: parent
+        anchors.fill: parent
+
+    }
 
     Node_shape{
         z:1
@@ -199,6 +209,8 @@ Background{
            }
 
         Node_text{
+            width: 0
+            height: 0
             anchors.centerIn: parent
             node_text.text: "G"
             }
@@ -268,36 +280,6 @@ Background{
           node_line.width : 150
         }
 
-    Item {
-
-        anchors.centerIn: parent
-
-        Text {
-             id : text_distance
-             width: 61
-             height: 20
-             anchors.centerIn: parent
-             color: "#ffffff"
-             text:"Distance :"
-             fontSizeMode: Text.Fit
-             anchors.verticalCenterOffset: -219
-             anchors.horizontalCenterOffset: -278
-             font.pointSize: 15
-        }
-
-         Text {
-              id : a_to_b_distance
-              width: 29
-              height: 19
-              anchors.centerIn: parent
-              anchors.leftMargin: 10
-               color: "#ffffff"
-               text:"Km"
-               anchors.verticalCenterOffset: -219
-               anchors.horizontalCenterOffset: -232
-               font.pointSize: 13
-         }
-    }
 
     RoundButton{
         id : resetButton
@@ -350,3 +332,14 @@ Background{
 
 }
 
+
+
+
+
+
+
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

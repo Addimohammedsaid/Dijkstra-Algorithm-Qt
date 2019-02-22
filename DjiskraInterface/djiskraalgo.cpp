@@ -2,7 +2,7 @@
 
 using namespace std;
 
-DjiskraAlgo::DjiskraAlgo(QObject *parent) : QObject(parent),data_dest("Destination"), data_src("Source")
+DjiskraAlgo::DjiskraAlgo(QObject *parent) : QObject(parent),data_dest("_"), data_src("_")
 {
     initialiser();
 
@@ -158,6 +158,9 @@ void DjiskraAlgo::initialiser()
     chemin.clear();
 
     antecedent.resize(7);
+
+    data_src = "_";
+    data_dest = "_";
 
     for (int i = 0 ; i < antecedent.size() ; i++){
         antecedent[i] = -1 ;

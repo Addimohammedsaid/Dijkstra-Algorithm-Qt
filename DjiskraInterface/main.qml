@@ -21,21 +21,21 @@ ApplicationWindow {
 
                 State {
                     when: window.width >= responsiveWidth
-                    ParentChange { target: contacts; parent: contactsContainer; }
-                    ParentChange { target: chat; parent: chatContainer; }
+                    ParentChange { target: page1; parent: page1Container; }
+                    ParentChange { target: page2; parent: page2Container; }
                     PropertyChanges { target: indicator; visible: hide }
                 }
             ]
             Item {
 
                  Page_1 {
-                    id: contacts
-                    anchors.fill: parent
+                    id: page1
+                       anchors.fill: parent
                 }
             }
             Item {
                 Page_2{
-                    id: chat
+                    id: page2
                     anchors.fill: parent
                 }
             }
@@ -54,11 +54,11 @@ ApplicationWindow {
             id: splitView
             anchors.fill: parent
             Item {
-                id: chatContainer
+                id: page2Container
                 width: parent.width*0.25; height: parent.height
             }
             Item {
-                id: contactsContainer
+                id: page1Container
                 width: parent.width*0.75; height: parent.height
             }
         }
