@@ -1,4 +1,4 @@
-import QtQuick 2.9
+﻿import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.11
@@ -12,54 +12,47 @@ Background{
     property string  active_src : "red"
     property string  active_dest: "blue"
 
-    property variant array:  ["A","B","C","D","E","F","G"]
+    property variant array : ["A","B","C","D","E","F","G"]
     property variant idNode: [node_A,node_B,node_C,node_D,node_E,node_F,node_G]
     property variant idLine: [a_c,a_b,c_d,b_d,b_e,c_f,d_e,e_g,f_g]
+
+    property variant distance_tab: [input_a,input_b,input_c,input_d,input_e,input_f,input_g]
     property variant _idLine:[[a_c,a_b],[a_b,b_d,b_e],[c_d,c_f,a_c],[c_d,d_e,b_d],[d_e,b_e,e_g],[c_f,f_g],[f_g,e_g]]
     property variant chemin: []
-
 
     Djiskralgo{
 
         id:djiska
 
+
         onPathChanged: {
 
-            chemin = djiska.path;
+                   chemin = djiska.path;
 
-            for(var i in chemin){
+                   for(var i in chemin){
 
-                idNode[chemin[i]].node_shape.border.color = active_dest
+                       idNode[chemin[i]].node_shape.border.color = active_dest
 
-                for(var j in _idLine[chemin[i]]){
+                       for(var j in _idLine[chemin[i]]){
 
-                    for (var k in _idLine[chemin[i-1]]){
+                           for (var k in _idLine[chemin[i-1]]){
 
-                        if(_idLine[chemin[i]][j] === _idLine[chemin[i-1]][k]){
+                               if(_idLine[chemin[i]][j] === _idLine[chemin[i-1]][k]){
 
-                             _idLine[chemin[i]][j].node_line.color = active_dest
-                             _idLine[chemin[i]][j].node_line.border.color = active_dest
-                        }
-                    }
-                }
+                                    _idLine[chemin[i]][j].node_line.color = active_dest
+                                    _idLine[chemin[i]][j].node_line.border.color = active_dest
+                               }
+                           }
+                       }
 
-            }
-       }
+                   }
+              }
 
-        onDistanceChanged :{
-            tab._depart.text = djiska.dest
-            tab._arriver.text = djiska.src
-            tab._distance.text = djiska.distance
+        onDistanceChanged: {
+            destination = djiska.src
+            arriver = djiska.dest
+            distancee = djiska.distance
         }
-    }
-
-    anchors.fill : parent
-
-    Affiche{
-        id : tab
-        anchors.centerIn: parent
-        anchors.fill: parent
-
     }
 
     Node_shape{
@@ -68,19 +61,30 @@ Background{
         height: parent.height*0.2
         width: parent.width*0.2
         anchors.verticalCenterOffset: -8
-        anchors.horizontalCenterOffset: -222
+        anchors.horizontalCenterOffset: (window.width>400)?-222:-222/2
         anchors.centerIn: parent
 
     MouseArea {
            anchors.fill: parent
            onClicked: {
-               parent.node_shape.border.color = getHandColor("A")
+              // input_a.text = mouse.x
+             // input_b.text = mouse.y
+             parent.node_shape.border.color = getHandColor(0)
            }
        }
 
     Node_text{
         anchors.centerIn: parent
-        node_text.text: "A"
+        node_text.text: array[0]
+        }
+
+    TextInput{
+        id : input_a
+        text: ""
+        color: "white"
+        font.pointSize: 20
+        anchors.centerIn:parent
+        anchors.verticalCenterOffset: 60
         }
     }
 
@@ -89,20 +93,29 @@ Background{
         id:node_B
         height: parent.height*0.2
         width: parent.width*0.2
-        anchors.verticalCenterOffset: -118
-        anchors.horizontalCenterOffset: -114
+        anchors.verticalCenterOffset:-118
+        anchors.horizontalCenterOffset: (window.width>400)?-114:-114/2
         anchors.centerIn: parent
 
         MouseArea {
                anchors.fill: parent
                onClicked: {
-                   parent.node_shape.border.color = getHandColor("B")
+                   parent.node_shape.border.color = getHandColor(1)
                }
            }
 
         Node_text{
             anchors.centerIn: parent
-            node_text.text: "B"
+            node_text.text: array[1]
+            }
+
+        TextInput{
+            id : input_b
+            text: ""
+            color: "white"
+            font.pointSize: 20
+            anchors.centerIn:parent
+            anchors.verticalCenterOffset: 60
             }
     }
 
@@ -112,18 +125,28 @@ Background{
         height: parent.height*0.2
         width: parent.width*0.2
         anchors.verticalCenterOffset: 112
-        anchors.horizontalCenterOffset: -114
+        anchors.horizontalCenterOffset: (window.width>400)?-114:-114/2
         anchors.centerIn: parent
 
         MouseArea {
                anchors.fill: parent
                onClicked: {
-                   parent.node_shape.border.color = getHandColor("C")}
+                   parent.node_shape.border.color = getHandColor(2)
+               }
            }
 
         Node_text{
             anchors.centerIn: parent
-            node_text.text: "C"
+            node_text.text: array[2]
+            }
+
+        TextInput{
+            id : input_c
+            text: ""
+            color: "white"
+            font.pointSize: 20
+            anchors.centerIn:parent
+            anchors.verticalCenterOffset: 60
             }
     }
 
@@ -133,7 +156,7 @@ Background{
         height: parent.height*0.2
         width: parent.width*0.2
         anchors.verticalCenterOffset: -8
-        anchors.horizontalCenterOffset: 5
+        anchors.horizontalCenterOffset: (window.width>400)?5:5/2
         anchors.centerIn: parent
 
         MouseArea {
@@ -142,13 +165,22 @@ Background{
             anchors.leftMargin: -1
             anchors.topMargin: 0
             onClicked: {
-                parent.node_shape.border.color = getHandColor("D")}
+                parent.node_shape.border.color = getHandColor(3)}
                 anchors.fill: parent
            }
 
         Node_text{
             anchors.centerIn: parent
-            node_text.text: "D"
+            node_text.text: array[3]
+            }
+
+        TextInput{
+            id : input_d
+            text: ""
+            color: "white"
+            font.pointSize: 20
+            anchors.centerIn:parent
+            anchors.verticalCenterOffset: 60
             }
     }
 
@@ -158,17 +190,26 @@ Background{
         height: parent.height*0.2
         width: parent.width*0.2
         anchors.verticalCenterOffset: -118
-        anchors.horizontalCenterOffset: 111
+        anchors.horizontalCenterOffset: (window.width>400)?111:111/2
         anchors.centerIn: parent
         MouseArea {
             onClicked: {
-                parent.node_shape.border.color = getHandColor("E")}
+                parent.node_shape.border.color = getHandColor(4)}
                  anchors.fill: parent
         }
 
         Node_text{
             anchors.centerIn: parent
-            node_text.text: "E"
+            node_text.text: array[4]
+            }
+
+        TextInput{
+            id : input_e
+            text: ""
+            color: "white"
+            font.pointSize: 20
+            anchors.centerIn:parent
+            anchors.verticalCenterOffset: 60
             }
     }
 
@@ -178,18 +219,27 @@ Background{
         height: parent.height*0.2
         width: parent.width*0.2
         anchors.verticalCenterOffset: 112
-        anchors.horizontalCenterOffset: 111
+        anchors.horizontalCenterOffset: (window.width>400)?111:111/2
         anchors.centerIn: parent
 
         MouseArea {
             onClicked: {
-                parent.node_shape.border.color = getHandColor("F")}
+                parent.node_shape.border.color = getHandColor(5)}
                 anchors.fill: parent
            }
 
         Node_text{
             anchors.centerIn: parent
-            node_text.text: "F"
+            node_text.text: array[5]
+            }
+
+        TextInput{
+            id : input_f
+            text: ""
+            color: "white"
+            font.pointSize: 20
+            anchors.centerIn:parent
+            anchors.verticalCenterOffset: 60
             }
     }
 
@@ -199,12 +249,12 @@ Background{
         height: parent.height*0.2
         width: parent.width*0.2
         anchors.verticalCenterOffset: -8
-        anchors.horizontalCenterOffset: 231
+        anchors.horizontalCenterOffset: (window.width>400)?231:231/2
         anchors.centerIn: parent
 
         MouseArea {
             onClicked: {
-                parent.node_shape.border.color = getHandColor("G")}
+                parent.node_shape.border.color = getHandColor(6)}
                 anchors.fill: parent
            }
 
@@ -212,7 +262,16 @@ Background{
             width: 0
             height: 0
             anchors.centerIn: parent
-            node_text.text: "G"
+            node_text.text: array[6]
+            }
+
+        TextInput{
+            id : input_g
+            text: ""
+            color: "white"
+            font.pointSize: 20
+            anchors.centerIn:parent
+            anchors.verticalCenterOffset: 60
             }
 
     }
@@ -220,64 +279,66 @@ Background{
     Node_line{
           id : a_b
           anchors.centerIn: node_A
-          rotation: -45
-          node_line.width : 150
+          rotation: (window.width>400)?-45:-65
+          node_line.width : (window.width>400)?150:130
         }
 
     Node_line{
           id : a_c
           anchors.centerIn: node_A
-          rotation: 45
+          rotation:(window.width>400)?45:65
           node_line.width : 150
+          node_line.x: 0
         }
 
     Node_line{
           id : b_e
           anchors.centerIn: node_B
           rotation: 0
-          node_line.width : 200
+          node_line.width : (window.width>400)?200:130
+          node_line.x: 0
         }
 
     Node_line{
           id : b_d
           anchors.centerIn: node_B
-          rotation: 45
-          node_line.width : 150
+          rotation:(window.width>400)?45:65
+          node_line.width : (window.width>400)?150:130
         }
 
     Node_line{
           id : c_d
           anchors.centerIn: node_C
-          rotation: -45
-          node_line.width : 150
+          rotation: (window.width>400)?-45:-65
+          node_line.width : (window.width>400)?150:130
         }
 
     Node_line{
           id : e_g
           anchors.centerIn: node_E
-          rotation: 45
-          node_line.width : 150
+          rotation:(window.width>400)?45:65
+          node_line.width : (window.width>400)?150:130
         }
 
     Node_line{
           id : d_e
           anchors.centerIn: node_D
-          rotation: -45
-          node_line.width : 160
+          rotation: (window.width>400)?-45:-65
+          node_line.width : (window.width>400)?150:130
         }
 
     Node_line{
           id : c_f
           anchors.centerIn: node_C
           rotation: 0
-          node_line.width : 200
+          node_line.width : (window.width>400)?200:130
         }
 
     Node_line{
           id : f_g
           anchors.centerIn: node_F
-          rotation: -45
-          node_line.width : 150
+          rotation: (window.width>400)?-(window.width)*0.041:-(window.width)*0.1615
+          node_line.width : (window.width>400)?150:130
         }
 
 
@@ -285,8 +346,8 @@ Background{
         id : resetButton
         anchors.bottom: parent.bottom
         anchors.left: parent.left
-        width: parent.width*0.08
-        anchors.margins: 10
+        width: parent.width*0.1
+        anchors.margins: 50
         height: parent.height*0.08
         text: "Reset"
         highlighted: true
@@ -297,16 +358,40 @@ Background{
         }
     }
 
+    RoundButton{
+        id : changeButton
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: parent.width*0.1
+        anchors.margins: 50
+        height: parent.height*0.08
+        text: "Change"
+        highlighted: true
+        font.pointSize: 15
+
+        onClicked: {
+            for(var i in array){
+            if(array[i]===djiska.src)change(i)
+        }
+    }
+}
     function getHandColor(a)
     {
         count+=1
+
         if(count==1){
-            djiska.src = a
+
+            djiska.src = array[a]
+
+            for(var i in distance_tab ){
+                distance_tab[i].text = djiska.array_distance(a,i)
+            }
+
             return active_src
 
         }
         else if (count==2){
-            djiska.dest = a
+            djiska.dest = array[a]
             return active_dest
         }
         else{
@@ -327,15 +412,33 @@ Background{
             idLine[j].node_line.border.color = inactive
         }
 
+        for(var k in distance_tab ){
+            distance_tab[k].text = ""
+        }
+
         djiska.initialiser();
     }
 
+    function change(a){
+
+       for(var i in distance_tab ){
+
+            djiska.array_setDistance(a,i,distance_tab[i].text)
+        }
+    }
+
+    Text {
+        id: version
+        text: qsTr("Version 1.0 v
+UNDER MIT LICENSE")
+        anchors.centerIn: node_F
+        anchors.horizontalCenterOffset: 180
+        anchors.verticalCenterOffset:110
+        color: "white"
+
+    }
+
 }
-
-
-
-
-
 
 
 

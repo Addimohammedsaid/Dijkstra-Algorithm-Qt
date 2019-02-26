@@ -9,6 +9,6 @@ Item {
              anchors.centerIn: parent
              color: "#ffffff"
              text:"A"
-             font.pointSize: 40
+             font.pointSize: (window.width<400)?20:40
         }
 }

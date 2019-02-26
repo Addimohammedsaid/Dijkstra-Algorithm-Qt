@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DjiskraAlgo_t {
-    QByteArrayData data[12];
-    char stringdata0[112];
+    QByteArrayData data[17];
+    char stringdata0[151];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,16 +39,22 @@ QT_MOC_LITERAL(3, 25, 11), // "pathChanged"
 QT_MOC_LITERAL(4, 37, 15), // "distanceChanged"
 QT_MOC_LITERAL(5, 53, 10), // "srcChanged"
 QT_MOC_LITERAL(6, 64, 11), // "initialiser"
-QT_MOC_LITERAL(7, 76, 4), // "dest"
-QT_MOC_LITERAL(8, 81, 3), // "src"
-QT_MOC_LITERAL(9, 85, 4), // "path"
-QT_MOC_LITERAL(10, 90, 12), // "QVector<int>"
-QT_MOC_LITERAL(11, 103, 8) // "distance"
+QT_MOC_LITERAL(7, 76, 14), // "array_distance"
+QT_MOC_LITERAL(8, 91, 1), // "a"
+QT_MOC_LITERAL(9, 93, 1), // "b"
+QT_MOC_LITERAL(10, 95, 17), // "array_setDistance"
+QT_MOC_LITERAL(11, 113, 1), // "s"
+QT_MOC_LITERAL(12, 115, 4), // "dest"
+QT_MOC_LITERAL(13, 120, 3), // "src"
+QT_MOC_LITERAL(14, 124, 4), // "path"
+QT_MOC_LITERAL(15, 129, 12), // "QVector<int>"
+QT_MOC_LITERAL(16, 142, 8) // "distance"
 
     },
     "DjiskraAlgo\0destChanged\0\0pathChanged\0"
     "distanceChanged\0srcChanged\0initialiser\0"
-    "dest\0src\0path\0QVector<int>\0distance"
+    "array_distance\0a\0b\0array_setDistance\0"
+    "s\0dest\0src\0path\0QVector<int>\0distance"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,21 +64,23 @@ static const uint qt_meta_data_DjiskraAlgo[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
-       4,   44, // properties
+       7,   14, // methods
+       4,   66, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06 /* Public */,
-       3,    0,   40,    2, 0x06 /* Public */,
-       4,    0,   41,    2, 0x06 /* Public */,
-       5,    0,   42,    2, 0x06 /* Public */,
+       1,    0,   49,    2, 0x06 /* Public */,
+       3,    0,   50,    2, 0x06 /* Public */,
+       4,    0,   51,    2, 0x06 /* Public */,
+       5,    0,   52,    2, 0x06 /* Public */,
 
  // methods: name, argc, parameters, tag, flags
-       6,    0,   43,    2, 0x02 /* Public */,
+       6,    0,   53,    2, 0x02 /* Public */,
+       7,    2,   54,    2, 0x02 /* Public */,
+      10,    3,   59,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -82,12 +90,14 @@ static const uint qt_meta_data_DjiskraAlgo[] = {
 
  // methods: parameters
     QMetaType::Void,
+    QMetaType::Int, QMetaType::Int, QMetaType::Int,    8,    9,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::QString,    8,    9,   11,
 
  // properties: name, type, flags
-       7, QMetaType::QString, 0x00495103,
-       8, QMetaType::QString, 0x00495103,
-       9, 0x80000000 | 10, 0x0049510b,
-      11, QMetaType::Int, 0x00495103,
+      12, QMetaType::QString, 0x00495103,
+      13, QMetaType::QString, 0x00495103,
+      14, 0x80000000 | 15, 0x0049510b,
+      16, QMetaType::Int, 0x00495103,
 
  // properties: notify_signal_id
        0,
@@ -109,6 +119,9 @@ void DjiskraAlgo::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 2: _t->distanceChanged(); break;
         case 3: _t->srcChanged(); break;
         case 4: _t->initialiser(); break;
+        case 5: { int _r = _t->array_distance((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+        case 6: _t->array_setDistance((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -206,13 +219,13 @@ int DjiskraAlgo::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 7;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty

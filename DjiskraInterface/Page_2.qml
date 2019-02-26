@@ -2,87 +2,37 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.11
-import DjiskraAlgo 1.0
 
 
+Rectangle{
 
-Background{
-
-     readonly property int lay : 400
-
-    Rectangle {
-
-        id : rect_page2
+        color: "#62a8f8"
         border.width: 5;
         border.color: "white"
-        anchors.fill: parent
-        anchors.centerIn: parent
-        color: "#62a8f8"
+        width: parent.width
 
         Text {
-            id: sidebatext
-            font.pointSize: (window.width>lay)?rect_page2.width*0.06:rect_page2.width*0.05
-            anchors.fill : rect_page2
-            anchors.centerIn: rect_page2
-            anchors.top: rect_page2.top
-            anchors.topMargin: 12
-            anchors.leftMargin:(window.width>lay)?rect_page2.width*0.20:rect_page2.width*0.25
+            id: title
+            x:(window.width>400)?40:110
+            y: 30
+            font.family:"Call of Ops Duty"
+            text: "RESULTAT :"
+            font.pointSize:40
             color: "white"
-            text: qsTr("Djiskra Algorithm ")
-            font.bold: true
+
         }
 
-        Rectangle{
-            x: (window.width>lay)?parent.width*0.31:parent.width*0.20
-            y: 50
-            width:(window.width>lay)?parent.width*0.34:parent.width * 0.55
-            color: "white"
-            height: parent.height*0.040
-
-            TextInput{
-                id :source_input
-                x: 3
-                y: 3
-                width: parent.width
-                height: parent.height
-               // onTextChanged:djiska.src = text
-                font.pointSize:(window.width>lay)?parent.width*0.1:9
-            }
-        }
-}
-
-    Rectangle {
-        x: (window.width>lay)?parent.width*0.31:parent.width*0.20
-        y: 90
-        width:(window.width>lay)?parent.width*0.34:parent.width * 0.55
-        height: parent.height*0.038
-        color: "#ffffff"
-
-        TextInput {
-            id :destination_input
-            x: 2
-            y: 3
+        Affiche{
+            id : tab
             width: parent.width
-            height: parent.height
-            font.pointSize:(window.width>lay)?parent.width*0.1:9
+            anchors.verticalCenterOffset: -25
+            anchors.horizontalCenterOffset: -50
+            anchors.rightMargin: 37
+            anchors.leftMargin: 28
+            anchors.topMargin: 80
+            anchors.centerIn: parent
+            anchors.fill: parent
         }
-    }
 
-    RoundButton{
-        id : find
-        x: (window.width>lay)?parent.width*0.26:parent.width*0.17
-        y: 130
-        width:(window.width>lay)?parent.width*0.44:parent.width * 0.60
-        height: parent.height*0.1
-        text: "Find"
-        flat: false
-        highlighted: true
-        font.pointSize: (window.width>lay)?15:23
-    }
 }
 
-
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}N
-}
- ##^##*/

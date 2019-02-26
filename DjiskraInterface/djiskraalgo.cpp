@@ -21,13 +21,6 @@ QString DjiskraAlgo::dest()
     return data_dest;
 }
 
-void DjiskraAlgo::setDest(QString destination)
-{
-    data_dest=destination;
-
-    setPath(chemin);
-}
-
 QString DjiskraAlgo::src()
 {
     return data_src;
@@ -46,6 +39,13 @@ void DjiskraAlgo::setSrc(QString source)
             villes[i].poids = 0;
         }
     }
+}
+
+void DjiskraAlgo::setDest(QString destination)
+{
+    data_dest=destination;
+
+    setPath(chemin);
 }
 
 QVector <int> DjiskraAlgo::path()
@@ -153,6 +153,7 @@ int DjiskraAlgo::smallest_node(QVector<noeud> villes)
       return visited_index[i_low];
 }
 
+
 void DjiskraAlgo::initialiser()
 {
     chemin.clear();
@@ -166,9 +167,9 @@ void DjiskraAlgo::initialiser()
         antecedent[i] = -1 ;
     }
 
-    villes.resize(7);
-
     QString nom_villes[7] = {"A","B","C","D","E","F","G"};
+
+    villes.resize(7);
 
     for (int i = 0 ; i < villes.size() ; i++)
         {
@@ -178,6 +179,32 @@ void DjiskraAlgo::initialiser()
         }
 
     setDistance(0);
+}
+/*
+QVector <QString> DjiskraAlgo::array_pair(int a)
+{
+    idchemin.resize(7);
+
+        for(int j=0 ; j<distances.size();j++){
+
+            if(distances[a][j]>0){
+
+                idchemin[a].push_back(villes[a].nom+"_"+villes[j].nom);
+                qDebug()<<villes[a].nom+"_"+villes[j].nom<<endl;
+            }
+    }
+
+    return idchemin[a];
+}*/
+
+int DjiskraAlgo::array_distance(int a,int b)
+{
+    return distances[a][b];
+}
+
+void DjiskraAlgo::array_setDistance(int a,int b,QString s)
+{
+    distances[a][b] = s.toInt() ;
 }
 
 

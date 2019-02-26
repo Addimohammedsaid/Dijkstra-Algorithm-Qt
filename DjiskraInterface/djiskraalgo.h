@@ -19,9 +19,13 @@ class DjiskraAlgo : public QObject
 public:
     explicit DjiskraAlgo(QObject *parent = nullptr);
 
-    Q_INVOKABLE void initialiser();
 
-    //hichem part :
+    Q_INVOKABLE void initialiser();
+   /* Q_INVOKABLE QVector <QString> array_pair(int a); */
+    Q_INVOKABLE int array_distance(int a,int b);
+    Q_INVOKABLE void array_setDistance(int a,int b,QString s);
+
+    //
 
     struct noeud
     {
@@ -49,6 +53,7 @@ private:
     QString data_dest;
     QString data_src;
     QVector <int> chemin;
+/*  QVector <QVector <QString>> idchemin; */
     int     _distance;
 
     QString dest();
@@ -63,13 +68,12 @@ private:
     int  distance();
     void setDistance(int empty);
 
-    //hichem part :
-
+//
     QVector <noeud> villes;
     QVector <int> antecedent;
     QVector <QVector<int> > distances;
 
-    //
+//
 };
 
 #endif // DJISKRAALGO_H

@@ -11,6 +11,3 @@ Qml used for the interface.
   Base of Qt 5.12.0
   
   
- ## Authors :
- * Addi mohammed said 
- * Benamara Hichem 

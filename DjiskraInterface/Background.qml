@@ -2,9 +2,8 @@ import QtQuick 2.0
 
 Item {
 
-
     Rectangle{
-
+        id : back
         gradient: Gradient {
             GradientStop {
                 position: 0
